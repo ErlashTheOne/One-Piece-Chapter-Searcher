@@ -1,6 +1,17 @@
 window.onload = function() {
     let button = document.querySelector("#searchButton");
+    let search = document.querySelector("input[type='search']");
+    search.addEventListener("keyup", function(event) {
+        // Number 13 is the "Enter" key on the keyboard
+        if (event.keyCode === 13) {
+          // Cancel the default action, if needed
+          event.preventDefault();
+          // Trigger the button element with a click
+          button.click();
+        }
+      });
     button.addEventListener("click", searchPokemon);
+    
 }; 
 
 function searchPokemon(){
@@ -11,13 +22,13 @@ function searchPokemon(){
         }
     }
     console.clear();
-    let search = document.querySelector("input[type='text']").value.toLowerCase();
+    let search = document.querySelector("input[type='search']").value.toLowerCase();
     let div = document.querySelector("#data");
     axios.get('https://pokeapi.co/api/v2/pokemon/' + search)
     .then(function (response){
         console.log(response.data);
 
-        if(response.data.sprites){
+        if(response.data.name){
 
             let newDiv = document.createElement("div");
             let frontImage = document.createElement("img"); 
