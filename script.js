@@ -44,7 +44,7 @@ window.onload = function () {
 function searchChapter(searchValue) {
 
     let div = document.querySelector("#data");
-
+    div.innerHTML = "";
     removeChapterIfExist();
     console.clear();
 
@@ -53,7 +53,7 @@ function searchChapter(searchValue) {
             console.log(response);
 
             if (response.data.title) {
-                createChapter(response.data, div);
+                printChapter(response.data, div);
 
             } else {
                 showError("Enter some value.", div);
@@ -65,7 +65,7 @@ function searchChapter(searchValue) {
         })
 }
 
-function removeChapterIfExist(){
+function removeChapterIfExist() {
 
     let ficha = document.querySelectorAll(".selectedChapter");
 
@@ -76,7 +76,7 @@ function removeChapterIfExist(){
     }
 }
 
-function createChapter(data, div){
+function printChapter(data, div) {
 
     let newDiv = document.createElement("div");
     let titleContainer = document.createElement("h2");
@@ -87,7 +87,7 @@ function createChapter(data, div){
 
     newDiv.className = "selectedChapter";
 
-    let titleText = document.createTextNode(data.title);
+    let titleText = document.createTextNode(data.title + " ");
     titleContainer.appendChild(titleText);
 
     let imgUrl = data.cover_images;
@@ -108,7 +108,7 @@ function createChapter(data, div){
         faved.className = "far fa-star";
     }
 
-    newDiv.appendChild(faved);
+    titleContainer.appendChild(faved);
     newDiv.appendChild(titleContainer);
     newDiv.appendChild(coverImage);
     newDiv.appendChild(chapterContainer);
@@ -120,16 +120,16 @@ function createChapter(data, div){
     });
 }
 
-function isInFavvedList(selectedChapter) { 
-    if(listExist()){
+function isInFavvedList(selectedChapter) {
+    if (listExist()) {
         let chapterList = JSON.parse(localStorage.getItem("chapters"));
         let isFavved = false;
         chapterList.forEach(element => {
-            if(element.chapter === selectedChapter){
+            if (element.chapter === selectedChapter) {
                 isFavved = true;
             }
         });
-        if(isFavved){
+        if (isFavved) {
             return true;
         } else {
             return false;
@@ -156,17 +156,20 @@ function toggleFav(icono, chapter) {
     // console.log(img);
 
     if (icono.classList.contains("far")) {
-        
-        if(!listExist()){
+
+        if (!listExist()) {
             let chapterJSon = [chapter];
             chapterJSon = JSON.stringify(chapterJSon);
-            localStorage.setItem("chapters", chapterJSon); 
-           
+            localStorage.setItem("chapters", chapterJSon);
+
         } else {
-            if(!isInFavvedList(chapter.chapter)){
+            if (!isInFavvedList(chapter.chapter)) {
                 let OldChapterList = JSON.parse(localStorage.getItem("chapters"));
                 OldChapterList.push(chapter);
-                let newChapterList = JSON.stringify( OldChapterList);
+                OldChapterList.sort(function (a, b) {
+                    return a.id - b.id; //shorting por id
+                })
+                let newChapterList = JSON.stringify(OldChapterList);
                 localStorage.setItem("chapters", newChapterList);
             }
         }
@@ -175,9 +178,9 @@ function toggleFav(icono, chapter) {
 
         icono.classList.remove("far");
         icono.classList.add("fas");
-        
+
     } else if (icono.classList.contains("fas")) {
-        
+
         deleteFromFavvedList(chapter);
 
         printFavved(aside);
@@ -187,46 +190,61 @@ function toggleFav(icono, chapter) {
     }
 }
 
-function deleteFromFavvedList(selectedChapter){
+function deleteFromFavvedList(selectedChapter) {
     let chapterList = JSON.parse(localStorage.getItem("chapters"));
     let cont = 0;
     let positionToDelete;
     chapterList.forEach(element => {
-        if(element.chapter === selectedChapter.chapter){
+        if (element.chapter === selectedChapter.chapter) {
             positionToDelete = cont;
         }
-        cont ++;
+        cont++;
     });
     chapterList.splice(positionToDelete, 1);
     let newChapterList = JSON.stringify(chapterList);
     localStorage.setItem("chapters", newChapterList);
 }
 
-function printFavved(aside){
+function printFavved(aside) {
 
     removeFavvedListIfExist();
 
-    if(listExist()){
-    
+    if (listExist()) {
+
         let favvedChapter = JSON.parse(localStorage.getItem("chapters"));
-        
+
+        let title = document.createElement("h2");
+        let titleText = document.createTextNode("Favved List:");
+        title.appendChild(titleText);
+        aside.style.marginLeft = "1rem";
+        aside.style.padding = "1rem";
+        aside.style.width = "30%";
+        aside.appendChild(title);
+
         favvedChapter.forEach(elem => {
 
             let newDiv = document.createElement("div");
-            let summaryContainer = document.createElement("p");
+            let summaryContainer = document.createElement("a");
 
             newDiv.className = "favedChapter";
+            summaryContainer.src = "#";
 
             let summaryText = document.createTextNode(`${elem.id} : ${elem.title}`);
             summaryContainer.appendChild(summaryText);
-            
+            summaryContainer.setAttribute("chapterData", JSON.stringify(elem));
+
+
             newDiv.appendChild(summaryContainer);
             aside.appendChild(newDiv);
         });
+
+        searchFromFavElements();
     }
+
+
 }
 
-function removeFavvedListIfExist(){
+function removeFavvedListIfExist() {
 
     let list = document.querySelectorAll(".favedChapter");
 
@@ -235,8 +253,29 @@ function removeFavvedListIfExist(){
             list[j].remove();
         }
     }
+
+    let title = document.querySelector("aside h2");
+    if (title) {
+        title.remove();
+    }
+
+    let aside = document.querySelector("aside");
+    aside.style.marginLeft = "0";
+    aside.style.padding = "0";
+    aside.style.width = "0";
 }
 
+function searchFromFavElements() {
+    let listItems = document.querySelectorAll("aside a");
+    for (let i = 0; i < listItems.length; i++) {
+        listItems[i].addEventListener('click', function () {
+            let data = JSON.parse(this.getAttribute("chapterData"));
+            let div = document.querySelector("#data");
+            removeChapterIfExist();
+            printChapter(data, div);
+        })
+    }
+}
 
 function showError(string, div) {
 
