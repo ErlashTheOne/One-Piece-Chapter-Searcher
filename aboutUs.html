@@ -1,54 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokedex</title>
+    <title>One Piece Chapter Searcher</title>
     <link rel="stylesheet" href="style.css">
-    <script src="axios.js"></script>
+    <script src="script.js"></script>
+    <link rel="shortcut icon" type="image/png" href="img/favicon-32x32.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+        integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+        crossorigin="anonymous" />
 </head>
+
 <body>
 
-    
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
-
-
+    <header class="Header">
+        <div class="wrapper">
+            <div class="Header__container">
+                <div class="menu-left">
+                    <a href="./index.html"><img src="./img/one_piece_logo.png"></a>
+                </div>
+                <div class="menu-right">
+                    <div id="nav-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <ul>
+                        <li><a href="./search.html">Search</a></li>
+                        <li><a href="./aboutUs.html">About Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
 
     <main class="Main">
         <div class="Main__container">
 
-            <div class="Pokedex">
-                <div class="Pokedex__container">
-
-                    <div class="Pokedex__top">
-                        <div class="Pokedex__top--ball">
-                            <div class="ball"></div>
-                        </div>
-                        <div class="Pokedex__top--lights">
-                            <div class="red"></div>
-                            <div class="yellow"></div>
-                            <div class="green"></div>
-                        </div>
-                    </div>
-
-                    <div class="Pokedex__search">
-                        <input type="search"><button id="searchButton">Search!</button>
-                    </div>
-
-                    <div class="Pokedex__display">
-                        <div class="screen">
-                            <p class="display">
-                                <div id="data"></div>
-                            </p>
-                        </div>
-                    </div>
-                   
-                </div>
-            </div>
+            
 
         </div>
     </main>
 
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
 </body>
+
 </html>

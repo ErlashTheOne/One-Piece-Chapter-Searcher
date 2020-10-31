@@ -25,18 +25,20 @@ window.onload = function () {
         }
         prevScrollpos = currentScrollPos;
     });
-
-    search.addEventListener("keyup", function (event) {
-        if (event.keyCode === 13) {
-            event.preventDefault();
-            button.click();
-        }
-    });
-
-    button.addEventListener("click", function () {
-        let searchValue = search.value.toLowerCase();
-        searchChapter(searchValue);
-    });
+    if (search){
+        search.addEventListener("keyup", function (event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                button.click();
+            }
+        });
+    }
+    if (button){
+        button.addEventListener("click", function () {
+            let searchValue = search.value.toLowerCase();
+            searchChapter(searchValue);
+        });
+    }
 
 };
 
@@ -216,10 +218,12 @@ function printFavved(aside) {
         let title = document.createElement("h2");
         let titleText = document.createTextNode("Favved List:");
         title.appendChild(titleText);
-        aside.style.marginLeft = "1rem";
-        aside.style.padding = "1rem";
-        aside.style.width = "30%";
-        aside.appendChild(title);
+        if(aside){
+            aside.style.marginLeft = "1rem";
+            aside.style.padding = "1rem";
+            aside.style.width = "30%";
+            aside.appendChild(title);
+        }
 
         favvedChapter.forEach(elem => {
 
@@ -235,7 +239,9 @@ function printFavved(aside) {
 
 
             newDiv.appendChild(summaryContainer);
-            aside.appendChild(newDiv);
+            if(aside){
+                aside.appendChild(newDiv);
+            }
         });
 
         searchFromFavElements();
@@ -260,9 +266,11 @@ function removeFavvedListIfExist() {
     }
 
     let aside = document.querySelector("aside");
-    aside.style.marginLeft = "0";
-    aside.style.padding = "0";
-    aside.style.width = "0";
+    if(aside){ 
+        aside.style.marginLeft = "0";
+        aside.style.padding = "0";
+        aside.style.width = "0";
+    }
 }
 
 function searchFromFavElements() {
