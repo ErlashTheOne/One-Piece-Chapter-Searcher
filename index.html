@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
         integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
         crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
 </head>
 
 <body>
@@ -29,8 +31,8 @@
                         <span></span>
                     </div>
                     <ul>
+                        <li><a class="active" href="./index.html">Home</a></li>
                         <li><a href="./search.html">Search</a></li>
-                        <li><a href="./aboutUs.html">About Us</a></li>
                     </ul>
                 </div>
             </div>
@@ -40,13 +42,44 @@
     <main class="Main">
         <div class="Main__container">
 
-            
+            <div class="HomePage">
+
+                <div class="hero">
+                    <div class="hero__img">
+                        <img src="img/hero.jpg" alt="One Piece hero1" style="object-position: 50% 80%;">
+                        <img src="img/hero2.png" alt="One Piece hero2">
+                        <img src="img/hero3.jpg" alt="One Piece hero3">
+                    </div>
+                    <h1>One Piece Chapter Searcher</h1>
+                    <h2>Check from the api  your favorite chapters</h2>
+                    <a href="#description"><div class="scroll-down"></div></a>
+                </div>
+
+                <div id="description">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam cupiditate cum neque cumque doloribus voluptatibus quis inventore voluptatem, et est. Saepe iusto consequatur quaerat excepturi vitae consectetur provident aliquam cupiditate.</p>
+                </div>
+
+            </div>
 
         </div>
     </main>
 
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="slick/slick.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+          $('.hero__img').slick({
+            infinite: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 2000,
+            dots: false,
+            arrows: false,
+          });
+        });
+      </script>
 </body>
 
 </html>

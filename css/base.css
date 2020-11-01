@@ -1,5 +1,8 @@
 /*BASE
 --------*/
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   padding: 0;
@@ -8,6 +11,10 @@ body {
   font-family: 'Montserrat', sans-serif;
   min-height: 100vh;
   overflow-x: hidden;
+  background-attachment: fixed;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 * {

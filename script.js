@@ -231,7 +231,7 @@ function printFavved(aside) {
             let summaryContainer = document.createElement("a");
 
             newDiv.className = "favedChapter";
-            summaryContainer.src = "#";
+            summaryContainer.href = "#";
 
             let summaryText = document.createTextNode(`${elem.id} : ${elem.title}`);
             summaryContainer.appendChild(summaryText);
@@ -276,7 +276,8 @@ function removeFavvedListIfExist() {
 function searchFromFavElements() {
     let listItems = document.querySelectorAll("aside a");
     for (let i = 0; i < listItems.length; i++) {
-        listItems[i].addEventListener('click', function () {
+        listItems[i].addEventListener('click', function (event) {
+            event.preventDefault();
             let data = JSON.parse(this.getAttribute("chapterData"));
             let div = document.querySelector("#data");
             removeChapterIfExist();

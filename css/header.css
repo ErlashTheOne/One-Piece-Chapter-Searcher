@@ -2,8 +2,8 @@
 
 /*HEADER
   --------*/
-.Header {
-    background-image: linear-gradient(180deg, transparent, transparent, transparent, rgba(255, 255, 255, 0.02));
+.Header {    
+    background: #ffffff1c;
     box-shadow: 0 -10px 20px black;
     padding: 10px 0;
     z-index: 100;
@@ -119,7 +119,6 @@
 .Header .menu-left {
     display: inline-block;
     vertical-align: middle;
-    float: left;
 }
 
 .Header .menu-left img {
@@ -129,7 +128,6 @@
 .Header .menu-right {
     display: inline-block;
     vertical-align: middle;
-    float: right;
 }
 
 .Header .menu-right ul {
@@ -167,7 +165,7 @@
 
 .Header .menu-right li a {
     text-decoration: none;
-    color: white;
+    color: #ffffff;
     position: relative;
     font-weight: bold;
 }

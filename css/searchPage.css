@@ -96,8 +96,8 @@
 
 }
 
-.Chapter aside:before {
-    /* content: "";
+/* .Chapter aside:before {
+    content: "";
     position: absolute;
     z-index: 0;
     right: -0px;
@@ -110,8 +110,8 @@
     -webkit-transform: matrix(-1, -0.1, 0, 1, 0, 0);
     -o-transform: matrix(-1, -0.1, 0, 1, 0, 0);
     -ms-transform: matrix(-1, -0.1, 0, 1, 0, 0);
-    transform: matrix(-1, -0.1, 0, 1, 0, 0); */
-}
+    transform: matrix(-1, -0.1, 0, 1, 0, 0);
+} */
 
 .Chapter aside h2 {
     margin-top: 0;
@@ -121,4 +121,6 @@
     margin-bottom: 0.5rem;
     cursor: pointer;
     display: block;
+    color: #000000;
+    text-decoration: none;
 }
