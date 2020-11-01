@@ -216,7 +216,7 @@ function printFavved(aside) {
         let favvedChapter = JSON.parse(localStorage.getItem("chapters"));
 
         let title = document.createElement("h2");
-        let titleText = document.createTextNode("Favved List:");
+        let titleText = document.createTextNode("Fav List:");
         title.appendChild(titleText);
         if(aside){
             aside.style.marginLeft = "1rem";

@@ -1,142 +1,226 @@
-.HomePage {}
+/* .HomePage {} */
 
-.HomePage .hero {
-    height: calc(100vh - 71.33px);
-    position: relative;
+@font-face {
+  font-family: "SequentialistBB";
+  src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/306FA6_1_0.woff2")
+      format("woff2"),
+    url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/306FA6_0_0.woff")
+      format("woff");
+  font-style: normal;
+  font-weight: 400;
 }
 
-.HomePage .hero__img {}
+@font-face {
+  font-family: "SequentialistBB";
+  src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/306FA6_0_0.woff2")
+      format("woff2"),
+    url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/306FA6_0_0.woff")
+      format("woff");
+  font-style: italic;
+  font-weight: 400;
+}
+
+.HomePage .hero {
+  height: calc(100vh - 71.33px);
+  position: relative;
+}
 
 .HomePage .hero img {
-    height: calc(100vh - 71.33px);
-    width: 100%;
-    object-fit: cover;
+  height: calc(100vh - 71.33px);
+  width: 100%;
+  object-fit: cover;
+}
+
+.HomePage .hero .titles {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 2rem;
+  text-align: center;
 }
 
 .HomePage .hero h1 {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 3rem;
-    max-width: 1000px;
-    color: #ffffff;
-    text-shadow: 0px 0px 4px #000000;
+  max-width: 1200px;
+  color: #ffffff;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 0 #000000, 2px -2px 0 #000000, -2px 2px 0 #000000,
+    -2px -2px 0 #000000, 2px 0px 0 #000000, 0px 2px 0 #000000,
+    -2px 0px 0 #000000, 0px -2px 0 #000000;
 }
 
 .HomePage .hero h2 {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 5rem;
-    max-width: 1000px;
-    color: #ffffff;
-    text-shadow: 0px 0px 4px #000000;
+  max-width: 1200px;
+  color: #ffffff;
+  font-size: 1.5rem;
+  margin-top: 0;
+  text-shadow: 2px 2px 0 #000000, 2px -2px 0 #000000, -2px 2px 0 #000000,
+    -2px -2px 0 #000000, 2px 0px 0 #000000, 0px 2px 0 #000000,
+    -2px 0px 0 #000000, 0px -2px 0 #000000;
 }
 
 .HomePage .hero .scroll-down {
-    border: 2px solid #fff;
-    border-radius: 20px;
-    bottom: 1rem;
-    height: 50px;
-    left: 0;
-    margin: 0 auto;
-    position: absolute;
-    right: 0;
-    width: 30px;
-    box-shadow: 0px 0px 4px #000000;
+  border: 2px solid #fff;
+  border-radius: 20px;
+  bottom: 1rem;
+  height: 50px;
+  left: 0;
+  margin: 0 auto;
+  position: absolute;
+  right: 0;
+  width: 30px;
+  box-shadow: 0px 0px 4px #000000;
 }
 
 .HomePage .hero .scroll-down::before {
-    animation: scrollDownAnimation 2s infinite;
-    background-color: #fff;
-    border-radius: 100%;
-    content: '';
-    height: 6px;
-    left: 0;
-    margin: 0 auto;
-    position: absolute;
-    right: 0;
-    top: 10px;
-    width: 6px;
-    box-shadow: 0px 0px 4px #000000;
+  animation: scrollDownAnimation 2s infinite;
+  background-color: #fff;
+  border-radius: 100%;
+  content: "";
+  height: 6px;
+  left: 0;
+  margin: 0 auto;
+  position: absolute;
+  right: 0;
+  top: 10px;
+  width: 6px;
+  box-shadow: 0px 0px 4px #000000;
+}
+
+.HomePage .imageText {
+  max-width: 1200px;
+  width: 100%;
+  margin: 3rem auto;
+  background: #252525;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #ffffff;
+  padding: 3rem;
+}
+
+.HomePage .imageText img {
+  border: 5px solid black;
+  max-width: 25vw;
+}
+
+p.bubble {
+  font-family: "SequentialistBB", cursive;
+  color: black;
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  text-align: center;
+  line-height: 1.4em;
+  margin: 40px auto;
+  background-color: #fff;
+  border: 5px solid #000000;
+  border-radius: 50%;
+  padding: 2rem;
+  font-size: 2rem;
+}
+
+p.bubble a {
+  font-family: "SequentialistBB", cursive;
+  color: black;
+}
+
+p.bubble span {
+  font-family: "SequentialistBB", cursive;
+  font-weight: bold;
+  font-size: 140%;
 }
 
 @-moz-keyframes scrollDownAnimation {
-    0% {
-        opacity: 0;
-        transform: translate(0, 0);
-    }
+  0% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
 
-    40% {
-        opacity: 1;
-    }
+  40% {
+    opacity: 1;
+  }
 
-    80% {
-        opacity: 0;
-        transform: translate(0, 20px);
-    }
+  80% {
+    opacity: 0;
+    transform: translate(0, 20px);
+  }
 
-    100% {
-        opacity: 0;
-    }
+  100% {
+    opacity: 0;
+  }
 }
 
 @-webkit-keyframes scrollDownAnimation {
-    0% {
-        opacity: 0;
-        transform: translate(0, 0);
-    }
+  0% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
 
-    40% {
-        opacity: 1;
-    }
+  40% {
+    opacity: 1;
+  }
 
-    80% {
-        opacity: 0;
-        transform: translate(0, 20px);
-    }
+  80% {
+    opacity: 0;
+    transform: translate(0, 20px);
+  }
 
-    100% {
-        opacity: 0;
-    }
+  100% {
+    opacity: 0;
+  }
 }
 
 @-o-keyframes scrollDownAnimation {
-    0% {
-        opacity: 0;
-        transform: translate(0, 0);
-    }
+  0% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
 
-    40% {
-        opacity: 1;
-    }
+  40% {
+    opacity: 1;
+  }
 
-    80% {
-        opacity: 0;
-        transform: translate(0, 20px);
-    }
+  80% {
+    opacity: 0;
+    transform: translate(0, 20px);
+  }
 
-    100% {
-        opacity: 0;
-    }
+  100% {
+    opacity: 0;
+  }
 }
 
 @keyframes scrollDownAnimation {
-    0% {
-        opacity: 0;
-        transform: translate(0, 0);
-    }
+  0% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
 
-    40% {
-        opacity: 1;
-    }
+  40% {
+    opacity: 1;
+  }
 
-    80% {
-        opacity: 0;
-        transform: translate(0, 20px);
-    }
+  80% {
+    opacity: 0;
+    transform: translate(0, 20px);
+  }
 
-    100% {
-        opacity: 0;
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 767px) {
+    .HomePage .imageText {
+        display: block;
+        text-align: center;
+    }
+    .HomePage .imageText img {
+        border: 5px solid black;
+        max-width: 95%;
+    }
+    p.bubble {
+        font-size: 1rem;
     }
 }
